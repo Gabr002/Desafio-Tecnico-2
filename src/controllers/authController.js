@@ -24,3 +24,17 @@ const signUp = async (req, res) => {
     await newUser.save();
 
     const token = generateToken(newUser);
+    
+    // Responder com sucesso
+    res.status(201).json({
+        id: newUser._id,
+        dataCriacao: newUser.dataCriacao,
+        dataAtualizacao: newUser.dataAtualizacao,
+        ultimoLogin: newUser.ultimoLogin,
+        token,
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ mensagem: 'Erro interno do servidor' });
+    }
+};
