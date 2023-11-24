@@ -41,28 +41,28 @@ const signUp = async (req, res) => {
 
 const signIn = async (req, res) => {
     try {
-      const { email, senha } = req.body;
+        const { email, senha } = req.body;
 
-    const user = await User.findOne({ email });
+        const user = await User.findOne({ email });
 
-    if (!user || !(await bcrypt.compare(senha, user.senha))) {
-      return res.status(401).json({ mensagem: 'Usuário e/ou senha inválidos' });
+        if (!user || !(await bcrypt.compare(senha, user.senha))) {
+          return res.status(401).json({ mensagem: 'Usuário e/ou senha inválidos' });
+        }
+    
+        user.ultimoLogin = new Date();
+        await user.save();
+    
+        const token = generateToken(user);
+
+        res.json({
+            id: user._id,
+            dataCriacao: user.dataCriacao,
+            dataAtualizacao: user.dataAtualizacao,
+            ultimoLogin: user.ultimoLogin,
+            token,
+        });
+    }catch (error) {
+        console.error(error);
+        res.status(500).json({ mensagem: 'Erro interno do servidor' });
     }
-
-    user.ultimoLogin = new Date();
-    await user.save();
-
-    const token = generateToken(user);
-
-    res.json({
-        id: user._id,
-        dataCriacao: user.dataCriacao,
-        dataAtualizacao: user.dataAtualizacao,
-        ultimoLogin: user.ultimoLogin,
-        token,
-      });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ mensagem: 'Erro interno do servidor' });
-    }
-  };
+};
