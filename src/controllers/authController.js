@@ -70,3 +70,16 @@ const signIn = async (req, res) => {
 const getUser = (req, res) => {
     res.json(req.user);
 };
+
+const generateToken = (user) => {
+    return jwt.sign(
+      {
+        id: user._id,
+        email: user.email,
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: '30m' }
+    );
+  };
+  
+  module.exports = { signUp, signIn, getUser };
