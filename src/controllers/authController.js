@@ -53,3 +53,16 @@ const signIn = async (req, res) => {
     await user.save();
 
     const token = generateToken(user);
+
+    res.json({
+        id: user._id,
+        dataCriacao: user.dataCriacao,
+        dataAtualizacao: user.dataAtualizacao,
+        ultimoLogin: user.ultimoLogin,
+        token,
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ mensagem: 'Erro interno do servidor' });
+    }
+  };
