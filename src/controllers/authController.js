@@ -11,5 +11,5 @@ const signUp = async (req, res) => {
         return res.status(400).json({ mensagem: 'E-mail já existente' });
       }
 
-       // Criptografar senha
+       // 
     const hashedPassword = await bcrypt.hash(senha, 10);
