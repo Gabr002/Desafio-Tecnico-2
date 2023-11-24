@@ -16,3 +16,16 @@ mongoose.connection.once('open', () => {
 
 // Configurar middlewares
 app.use(bodyParser.json());
+
+// Configurar rotas
+app.use('/api/auth', authRoutes);
+
+app.use((req, res) => {
+  res.status(404).json({ mensagem: 'Endpoint não encontrado' });
+});
+
+// O servidor
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor iniciado na porta ${PORT}`);
+});
