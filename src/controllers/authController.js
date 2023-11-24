@@ -66,3 +66,7 @@ const signIn = async (req, res) => {
         res.status(500).json({ mensagem: 'Erro interno do servidor' });
     }
 };
+
+const getUser = (req, res) => {
+    res.json(req.user);
+};
