@@ -51,3 +51,5 @@ const signIn = async (req, res) => {
 
     user.ultimoLogin = new Date();
     await user.save();
+
+    const token = generateToken(user);
