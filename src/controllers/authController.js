@@ -43,9 +43,11 @@ const signIn = async (req, res) => {
     try {
       const { email, senha } = req.body;
 
-      // Encontrar usuário pelo e-mail
     const user = await User.findOne({ email });
 
     if (!user || !(await bcrypt.compare(senha, user.senha))) {
       return res.status(401).json({ mensagem: 'Usuário e/ou senha inválidos' });
     }
+
+    user.ultimoLogin = new Date();
+    await user.save();
