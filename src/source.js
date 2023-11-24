@@ -13,3 +13,6 @@ mongoose.connection.on('error', console.error.bind(console, 'Erro de conexão ao
 mongoose.connection.once('open', () => {
   console.log('Conectado ao MongoDB!');
 });
+
+// Configurar middlewares
+app.use(bodyParser.json());
