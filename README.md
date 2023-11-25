@@ -21,40 +21,40 @@ Este projeto é uma API RESTful para autenticação de usuários, com operaçõe
    - Retorna informações do usuário autenticado.
    - Trata erros, incluindo token inválido ou expirado.
 
-## Configuração do Projeto
+# Configuração do Projeto
 
-## 1. Instalação de Dependências:
+## 1. **Instalação de Dependências:**
     npm install
     Configuração do Banco de Dados:
 
-## 2. Certifique-se de ter o XAMPP instalado e o MySQL em execução.
-    Execute o script para criar o banco de dados e a tabela:
-    bash
-    Copy code
-    npm run create-database
-    Configuração de Variáveis de Ambiente:
+## 2. **Certifique-se de ter o XAMPP instalado e o MySQL em execução.**
+      Execute o script para criar o banco de dados e a tabela:
+      bash
+      Copy code
+      npm run create-database
+      Configuração de Variáveis de Ambiente:
 
-## 3. Crie um arquivo .env na raiz do projeto e adicione:
-    makefile
-    Copy code
-    PORT=3000
-    JWT_SECRET=
-## 4. Execução do Projeto:
+## 3. **Crie um arquivo .env na raiz do projeto e adicione:**
+   makefile
+   Copy code
+   PORT=3000
+   JWT_SECRET=
+## 4. **Execução do Projeto:**
 
     bash
     Copy code
     npm start
 
-## 5. Tecnologias Utilizadas
+## 5. **Tecnologias Utilizadas**
 
-    Node.js
-    Express.js
-    MySQL
-    JWT (JSON Web Tokens)
-    Bcrypt.js
-    Dotenv
-    Contribuição
-    Contribuições são bem-vindas! Sinta-se à vontade para abrir problemas ou enviar solicitações de pull.
+   Node.js
+   Express.js
+   MySQL
+   JWT (JSON Web Tokens)
+   Bcrypt.js
+   Dotenv
+   Contribuição
+   Contribuições são bem-vindas! Sinta-se à vontade para abrir problemas ou enviar solicitações de pull.
 
 ## Licença
 
